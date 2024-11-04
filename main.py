@@ -16,7 +16,6 @@ def main():
     _, max_newlines = get_dataset_stats(dataset)
     
     training_config = TrainingConfig(
-        num_epochs=100,
         batch_size=16,
         initial_lr=1e-4,
         weight_decay=0.05,

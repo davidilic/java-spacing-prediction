@@ -30,3 +30,25 @@ class DatasetVisualizer:
                 distributions['newlines'].extend([obj['newlines']] * token_count)
                 
         return distributions
+    
+    def _create_plots(self, distributions: Dict[str, List[int]], save_path: Optional[Path] = None) -> None:
+        """Create plots for space and newline distributions."""
+        
+        fig, axs = plt.subplots(2, 1, figsize=(15, 10))
+
+        axs[0].hist(distributions['spaces'], bins=50, color='skyblue', edgecolor='black')
+        axs[0].set_title('Spaces Distribution')
+        axs[0].set_xlabel('Number of spaces')
+        axs[0].set_ylabel('Frequency')
+
+        axs[1].hist(distributions['newlines'], bins=50, color='salmon', edgecolor='black')
+        axs[1].set_title('Newlines Distribution')
+        axs[1].set_xlabel('Number of newlines')
+        axs[1].set_ylabel('Frequency')
+
+        plt.tight_layout()
+
+        if save_path:
+            plt.savefig(save_path)
+            
+        plt.show()

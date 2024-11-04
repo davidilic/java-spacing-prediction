@@ -15,7 +15,10 @@ class TokenDataset(Dataset):
             self.vocab.type_to_idx = existing_types.copy()
             
             self.vocab.token_to_idx['<UNK>'] = len(existing_vocab) - 1
-            self.vocab.type_to_idx['<UNK>'] = existing_types['IDENTIFIER']
+            if 'IDENTIFIER' in existing_types:
+                self.vocab.type_to_idx['<UNK>'] = existing_types['IDENTIFIER']
+            else:
+                self.vocab.type_to_idx['<UNK>'] = len(existing_types) - 1
         else:
             self.vocab = VocabularyBuilder()
             
