@@ -4,6 +4,7 @@ import torch
 from datetime import datetime
 from model.transformer import TransformerModel
 from dataset.dataset import TokenDataset
+import os
 
 class CheckpointManager:
     """Manages model checkpointing with complete state saving."""
@@ -45,6 +46,7 @@ class CheckpointManager:
             'metrics': metrics,
         }
         
+        os.makedirs(os.path.dirname(path), exist_ok=True)
         torch.save(checkpoint, path)
         print(f"New best model (loss: {metrics['loss']:.4f}) saved to {path}")
     

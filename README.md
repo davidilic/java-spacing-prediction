@@ -1,7 +1,7 @@
 # Code Formatting Transformer
 
 This project implements a Transformer-based neural network for Java between-token spacing prediction.
-It's loosely based on this [paper](https://users.ece.utexas.edu/~gligoric/slides/NieETAL20CoqStyle.pdf) and [presentation](https://users.ece.utexas.edu/~gligoric/slides/NieETAL20CoqStyle.pdf) on formatting Coq code.
+It's loosely based on this [paper](https://arxiv.org/pdf/2006.16743) and [presentation](https://users.ece.utexas.edu/~gligoric/slides/NieETAL20CoqStyle.pdf) on formatting Coq code.
 
 ## Project Overview
 
@@ -39,7 +39,17 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Creating Dataset (Optional)
+### Using the existing model
+
+A pre-trained model checkpoint is available [here](https://drive.google.com/file/d/1Ae-4DFzJ2KZ3vHnP-WFIp1yCDcCsRmoO/view?usp=sharing). To use it:
+
+1. Download the checkpoint file
+2. Place it at the in the `checkpoints` directory which should be created at the root of the repository
+3. Load and evaluate it using the `evaluation/evaluation.ipynb` notebook
+
+### Training a new model
+
+#### Creating Dataset (Optional)
 
 This step is optional as the dataset is already provided in the `datasets/data` directory.
 
@@ -56,7 +66,7 @@ python -m dataset.script \
     --test_ratio 0.1
 ```
 
-### Training
+#### Training
 
 Train the model using:
 
@@ -66,17 +76,9 @@ python main.py
 
 This will automatically save models to the `checkpoints` directory.
 
-### Evaluation
+#### Evaluation
 
 Use the provided Jupyter notebook in `evaluation/evaluation.ipynb` to evaluate model performance.
-
-## Pre-trained Model
-
-A pre-trained model checkpoint is available [here](https://drive.google.com/file/d/1Ae-4DFzJ2KZ3vHnP-WFIp1yCDcCsRmoO/view?usp=sharing). To use it:
-
-1. Download the checkpoint file
-2. Place it in the `checkpoints` directory
-3. Load and evaluate it using the `evaluation/evaluation.ipynb` notebook
 
 ## Model Architecture
 
