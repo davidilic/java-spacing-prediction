@@ -58,12 +58,7 @@ The needed Java source files are not included in this repository in order to kee
 Process Java source files to create the training dataset:
 
 ```bash
-python -m dataset.script \
-    --repo_path /path/to/java/repo \
-    --train_path data/train.jsonl \
-    --test_path data/test.jsonl \
-    --max_examples 50000 \
-    --test_ratio 0.1
+python -m dataset.script /path/to/java/repo path_to/train_output.jsonl path_to/test_output.jsonl --max_examples 5000 --test_ratio 0.1
 ```
 
 #### Training
